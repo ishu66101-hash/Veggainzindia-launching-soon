@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VEGGAINZINDIA | Launching Soon</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- RESET & BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden; /* Prevent scrolling */
+            background-color: #0B3D2E;
+            /* Matte Dark Green with Soft Spotlight Glow */
+            background: radial-gradient(circle at center, #165b45 0%, #0B3D2E 70%, #062119 100%);
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* --- BACKGROUND IMAGE OVERLAY --- */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Placeholder Image - Replace URL below */
+            background-image: url(''); 
+            background-size: cover;https://pixabay.com/illustrations/abstract-background-wallpaper-1780223/
+            background-position: center;
+            opacity: 0.08; /* Low opacity for texture */
+            z-index: 0;
+            pointer-events: none;
+            filter: grayscale(100%); /* Keeps it classy/monochromatic */
+        }
+
+        /* --- MAIN CONTAINER --- */
+        .content-wrapper {
+            z-index: 10;
+            text-align: center;
+            padding: 20px;
+            opacity: 0; /* Hidden initially for fade-in */
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* --- TYPOGRAPHY & BRANDING --- */
+        .brand-heading {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            line-height: 1.1;
+            font-weight: 900;
+        }
+
+        /* Specific Colors requested */
+        .text-veg {
+            color: #2E8B57; /* Dark Veg Green */
+            /* Text shadow added to separate dark text from dark bg */
+            text-shadow: 0px 0px 15px rgba(46, 139, 87, 0.4); 
+        }
+        
+        .text-gainz {
+            color: #FFFFFF; /* Pure White */
+        }
+        
+        .text-india {
+            color: #138808; /* Bright India Green */
+            text-shadow: 0px 0px 10px rgba(19, 136, 8, 0.5);
+        }
+
+        .slogan {
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .launching-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #138808;
+            letter-spacing: 4px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+        
+        /* Decorative lines around Launching Soon */
+        .launching-text::before, .launching-text::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            height: 1px;
+            background-color: #138808;
+        }
+        .launching-text::before { left: -40px; }
+        .launching-text::after { right: -40px; }
+
+        /* --- DUMBBELL BUTTON --- */
+        .dumbbell-btn-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .dumbbell-btn {
+            position: relative;
+            text-decoration: none;
+            color: #0B3D2E;
+            background: #ffffff;
+            font-weight: 800;
+            font-size: 0.9rem;
+            padding: 12px 40px;
+            border-radius: 4px; /* The "Bar" of the dumbbell */
+            letter-spacing: 1px;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 20px rgba(255,255,255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+        }
+
+        /* The Weights (Left and Right) */
+        .dumbbell-btn::before, 
+        .dumbbell-btn::after {
+            content: '';
+            position: absolute;
+            height: 140%; /* Taller than the bar */
+            width: 12px;
+            background-color: #ffffff;
+            border-radius: 4px;
+            transition: all 0.4s ease;
+        }
+
+        .dumbbell-btn::before { left: -8px; }
+        .dumbbell-btn::after { right: -8px; }
+
+        /* Hover Effects */
+        .dumbbell-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255,255,255, 0.3);
+            background-color: #138808; /* Turns India Green on hover */
+            color: white;
+        }
+
+        .dumbbell-btn:hover::before, 
+        .dumbbell-btn:hover::after {
+            background-color: #138808; /* Weights turn green too */
+            height: 120%; /* Slight compression animation */
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.3);
+            letter-spacing: 1px;
+            z-index: 10;
+        }
+
+        /* --- ANIMATIONS --- */
+        
+        /* Fade In Layout */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Floating Breath Animation */
+        @keyframes float {
+            0% { transform: translatey(0px); }
+            50% { transform: translatey(-10px); }
+            100% { transform: translatey(0px); }
+        }
+
+        /* Fade Animation for Title Text */
+        @keyframes textShimmer {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+
+        .brand-heading {
+            animation: textShimmer 4s infinite ease-in-out;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .brand-heading {
+                font-size: 2.5rem;
+                display: flex;
+                flex-direction: column; /* Stack logo words on very small screens if needed, keeps it clean */
+                gap: 5px;
+            }
+            .slogan {
+                font-size: 0.9rem;
+            }
+            .launching-text::before, .launching-text::after {
+                width: 15px;
+                left: -25px;
+                right: -25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero-overlay"></div>
+
+    <div class="content-wrapper" id="mainContent">
+        
+        <h1 class="brand-heading">
+            <span class="text"<span class="text-Veggainz">VegGainz™</span><span class="India"
+        </h1>
+        
+        <p class="slogan">#1 in india Fueling Fitness, The Veg Way.FOLLOW NOW AND GET FREE MEALS</p>
+
+        <div class="launching-text">Launching Soon DATE REVEAL ON INSTAGRAM</div>
+
+        <div class="dumbbell-btn-container">
+            <a href="https://instagram.com/veggainzindia" target="_blank" class="dumbbell-btn">
+                Follow Updates
+            </a>
+        </div>
+
+    </div>
+
+    <footer>
+        &copy; 2025 VEGGAINZINDIA™ — All Rights Reserved.
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const content = document.getElementById('mainContent');
+            
+            // Trigger Fade In
+            content.style.opacity = '0';
+            setTimeout(() => {
+                content.style.animation = "fadeIn 1.5s ease-out forwards, float 6s ease-in-out 1.5s infinite";
+            }, 300);
+        });
+    </script>
+
+</body>
+</html>
